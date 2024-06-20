@@ -9,7 +9,7 @@ import database
 database.Base.metadata.create_all(bind = database.engine)
 
 app = FastAPI()
-
+#
 @app.get("/user", response_model=list[schemas.User], tags=["USER"])
 def get_user(username: str,db: Session = Depends(depends.get_db)):
     try:
