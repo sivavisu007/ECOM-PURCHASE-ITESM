@@ -28,7 +28,7 @@ def create_products(db: Session, product: schemas.ProductCreate):
     return db_product
 
 def get_cart_items(db: Session, user_id : int):
-    return db.query(models.CartItem).filter(models.CartItem.user_id == user_id).first()
+    return db.query(models.CartItem).filter(models.CartItem.user_id == user_id).all()
 
 def add_item_to_cart(db: Session, cart_item : schemas.CartItemCreate, user_id : int = models.User.id):
     db_cart_item = models.CartItem(**cart_item.dict(), user_id = user_id)
